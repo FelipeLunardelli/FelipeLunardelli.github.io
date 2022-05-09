@@ -444,14 +444,14 @@
                     <a href="" class="tags tags--secundario target">Tag</a>
                 </div>
             </div>
-            <div class="blog--link">
+            <div id="footer" class="blog--link">
                 <button class="cerchio target" data-dist="5">
                     <a href="" class="botao botao--destaque">Mais posts</a>
                   </button>
             </div>
         </div>
         <div class="container recurso">
-            <h2 id="footer" class="h6 titulo--secao">Recurso gratuito</h2>
+            <h2 class="h6 titulo--secao">Recurso gratuito</h2>
             <div class="recurso--info">
                 <h2 class="h3">Ebook Gratuito:</h2>
                 <h3 class="h4">Tudo que você precisa para criar um website com resultado.</h3>
@@ -633,9 +633,9 @@
         var path = document.getElementById("path");
 
         $(document).scroll(function () {
-            var scrollPos = $(document).scrollTop() + $(window).height() / 3 * 1;
+            var scrollPoss = $(document).scrollTop() + $(window).height() / 3 * 1;
 
-            if (scrollPos >= quemsomos && scrollPos < blog) {
+            if (scrollPoss >= quemsomos && scrollPoss < blog) {
                 path.classList.add("pathativo");
                 $('body').addClass("bodydark");
                 $('footer').removeClass("footerdark");
@@ -657,7 +657,7 @@
                 $('#devdark').css("opacity", "1");
                 $('#deploylight').css("opacity", "0");
                 $('#deploydark').css("opacity", "1");
-            } else if (scrollPos >= blog && scrollPos < footers) {
+            } else if (scrollPoss >= blog && scrollPoss < footers) {
                 $('body').removeClass("bodydark");
                 $('h1').removeClass("hdark");
                 $('h2').removeClass("h2dark");
@@ -680,11 +680,11 @@
                 $('#devdark').css("opacity", "0");
                 $('#deploylight').css("opacity", "1");
                 $('#deploydark').css("opacity", "0");
-            } else if (scrollPos >= footers) {
+            } else if (scrollPoss >= footers) {
                 $('.icon--whatsapp').addClass("iconwhatsappdark");
                 $('footer').addClass("footerdark");
                 $('.cursor').addClass("cursorfooter");
-            } else if (scrollPos < quemsomos) {
+            } else if (scrollPoss < quemsomos) {
                 $('body').removeClass("bodydark");
                 $('h1').removeClass("hdark");
                 $('h2').removeClass("h2dark");
