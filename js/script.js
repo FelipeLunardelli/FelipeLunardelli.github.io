@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
    close_icon.onclick = () => {
         menuclose()
-        $('.circle').addClass("circledark");
-        $('.cursor').addClass("cursordark");
+        $('.circle').removeClass("circledark");
+        $('.cursor').removeClass("cursordark");
     };
 });
 
