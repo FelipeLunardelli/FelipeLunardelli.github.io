@@ -25,7 +25,7 @@
     <script type="text/javascript" src="js/script.min.js"></script>
 </head>
 
-<body>
+<body class="light-theme">
     <div class="cursor-wrap js-cursor-wrap">
         <div class="cursor js-cursor">
           <svg height="60" width="60" class="circle">
@@ -236,7 +236,7 @@
         </div>
         <div class="fullcontainer depoimentos">
             <h3>O que nossos clientes falam sobre nós.</h3>
-            <div class="glide">
+            <div id="depoimentos" class="glide">
                 <div class="glide__track" data-glide-el="track">
                   <ul class="glide__slides">
                     <li class="glide__slide">
@@ -270,13 +270,13 @@
 
                 <div class="glide__container">
                     <div class="glide__bullets" data-glide-el="controls[nav]">
-                        <button class="glide__bullet" data-glide-dir="=0"></button>
-                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="target glide__bullet" data-glide-dir="=0"></button>
+                        <button class="target glide__bullet" data-glide-dir="=1"></button>
                       </div>
 
                     <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"></button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"></button>
+                        <button class="cerchio target glide__arrow glide__arrow--left" data-glide-dir="<" data-dist="1"></button>
+                        <button class="cerchio target glide__arrow glide__arrow--right" data-glide-dir=">" data-dist="1"></button>
                       </div>
                   </div> 
                 </div>             
@@ -293,6 +293,7 @@
                 
             </div>
             <div class="quemsomos--imagem">
+                <img src="images/PatternMarca.svg" alt="">
                 <img src="images/PatternMarca.svg" alt="">
             </div>
         </div>
@@ -311,7 +312,7 @@
                     <div class="servicos--conteudo--infos--inside servicowebframe servico--ativo">
                         <img src="images/servicos-web.svg" alt="">
                         <div class="servicos--conteudo--infos--inside--conteudo">
-                            <h5>Design e desenvolvimento de projetos web.</h5>
+                            <h5 id="blog">Design e desenvolvimento de projetos web.</h5>
                             <p class="p2">Sites, landing pages, e-commerces desenvolvidos visando a experiência do usuário, a performance e os resultados.</p>
                             <button class="cerchio target" data-dist="5">
                                 <a href="" class="botao botao--destaque">Conheça mais</a>
@@ -446,7 +447,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="newsletter">
                 <h2 class="h5">Assine nossa newsletter!</h2>
@@ -518,7 +519,10 @@
     </footer>
 
     <script>
-        var ponto = $('#collapse').offset().top;
+        var collapsemenu = $('#collapse').offset().top;
+        var collapsequemsomos = $('#depoimentos').offset().top;
+        var collapseblog = $('#blog').offset().top;
+
         var logocompleto = document.getElementById("logocompleto");
         var logosimbolo = document.getElementById("logosimbolo");
         var menuativo = document.getElementById("menuativo");
@@ -531,11 +535,12 @@
         var linkinativo7 = document.getElementById("linkativo7");
         var linkinativo8 = document.getElementById("linkativo8");
         var linkinativo9 = document.getElementById("linkativo9");
+        var body = document.body;
 
         $(document).scroll(function () {
             var scrollPos = $(document).scrollTop();
 
-            if (scrollPos >= ponto) {
+            if (scrollPos >= collapsemenu && scrollPos < collapsequemsomos) {
                 logocompleto.classList.add("logoinativo")
                 logosimbolo.classList.add("logoativo")
                 menuativo.classList.add("menuativo")
@@ -548,7 +553,9 @@
                 linkinativo7.classList.add("linkinativo")
                 linkinativo8.classList.add("linkinativo")
                 linkinativo9.classList.add("linkinativo")
-            } else if (scrollPos < ponto) {
+
+                body.classList.remove("dark-theme")
+            } else if (scrollPos < collapsemenu) {
                 logocompleto.classList.remove("logoinativo")
                 logosimbolo.classList.remove("logoativo")
                 menuativo.classList.remove("menuativo")
@@ -561,6 +568,10 @@
                 linkinativo7.classList.remove("linkinativo")
                 linkinativo8.classList.remove("linkinativo")
                 linkinativo9.classList.remove("linkinativo")
+            } else if (scrollPos >= collapsequemsomos && scrollPos < collapseblog) {
+                body.classList.add("dark-theme")
+            } else if (scrollPos >= collapseblog) {
+                body.classList.remove("dark-theme")
             }
         })
     </script> <!-- Compressão do Header -->
@@ -651,6 +662,19 @@ function move() {
         $('.servicowebframe').removeClass("servico--ativo");
     };
     </script> <!-- Serviços -->
+
+    <script>
+$(document).ready(function () {
+    $(".footer").hover(
+      function () {
+        $(".cursor").addClass("cursorfooter");
+      },
+      function () {
+        $(".cursor").removeClass("cursorfooter");
+      }
+    );
+  });
+    </script>
 </body>
 
 </html>

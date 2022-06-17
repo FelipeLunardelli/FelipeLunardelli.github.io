@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menu_icon.onclick = () => {
         menuopen()
-        $('.circle').removeClass("circledark");
-        $('.cursor').removeClass("cursordark");
+        $('.cursor').addClass("cursormenu");
+        $('.cursor').addClass("cursormenuhover");
     };
 
    close_icon.onclick = () => {
         menuclose()
-        $('.circle').removeClass("circledark");
-        $('.cursor').removeClass("cursordark");
+        $('.cursor').removeClass("cursormenu");
+        $('.cursor').removeClass("cursormenuhover");
     };
 });
 
